@@ -1,0 +1,237 @@
+
+<!-- saved from url=(0035)http://chir.ag/projects/team-maker/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>Team Maker - Chirag Mehta : chir.ag</title>
+  <meta name="description" content="Team Maker by Chirag Mehta and Tamara Swedberg - create random teams and groups easily">
+  <meta name="keywords" content="team, maker, group, random, list, chirag, mehta">
+  <meta name="viewport" content="width=700">
+  <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+  <script type="text/javascript" src="./Team Maker_files/jquery.min.js"></script>
+  <script>
+    var basedon = { "Mentors":   "Josh\nTodd\nBrendan\nSteve H\nMark\nSteve R\nDanny Woo",
+                    
+                  };
+    $(function() {
+      $("#teams").change(function() {
+        $("#numteams").html("No. of Teams: " + $(this).val());
+      });
+      $("#basedon").change(function() {
+        $("#actualteams").val(basedon[$(this).val()]);
+      });
+      $("#format").change(function() {
+        if($(this).val() == "new")
+          $("#frm").attr("target", "_blank");
+        else
+          $("#frm").attr("target", "fout");
+      });
+      $("#basedon").change();
+
+    });
+    function updateNameCounts()
+    {
+    }
+  </script>
+  <style>
+    body, html, div, p, table, tr, td, span, h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+    body {
+      padding: 0 0.5em;
+      background: #ADDA88;
+      font-size: 1em;
+      font-family: "Trebuchet MS", Helvetica, Verdana, Arial
+    }
+    h1 {
+      font-size: 1.5em;
+      color: darkblue;
+    }
+    h2 {
+      font-size: 1.05em;
+      color: darkred;
+    }
+    h3 {
+      font-size: 0.9em;
+      padding: 0.5em 1em;
+    }
+    h4 {
+      font-size: 0.8em;
+      padding: 0.5em 0;
+    }
+    .opt {
+      margin-left: 1em;
+    }
+    #content {
+      background: #D5F3BD;
+      margin: 0 auto;
+      width: 45em;
+      padding: 0.5em 1em;
+      border: 0.5em solid white;
+      border-top: 0;
+      text-align: left;
+    }
+    #footer {
+      margin: 1em auto;
+      text-align: center;
+      font-size: 0.8em;
+      width: 45em;
+      color: #262;
+    }
+    #footer a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #141;
+      border-bottom: 1px dashed #141;
+    }
+    #footer a:hover {
+      color: black;
+      border-bottom: 1px solid black;
+    }
+    #main {
+      padding: 0.5em 0;
+      width:100%;
+    }
+    #options, #teamsetup {
+      padding-left: 1.5em;
+    }
+    #names {
+      width:20em;
+      height:13.5em;
+    }
+    select {
+      width:12em;
+    }
+    #basedon, #customnames, #actualteams {
+      width:14em;
+    }
+    #actualteams {
+      height: 9.5em;
+    }
+    #output {
+      padding-top: 1em;
+    }
+    #cmdgen {
+      width: 12em;
+      height: 3em;
+    }
+    #app {
+      float: right;
+      margin-right: 16px;
+    }
+    #app img {
+      border: 0;
+    }
+    #app h4 {
+      float:left;
+      margin-right: 8px;
+      text-align: right;
+    }
+  </style>
+<script type="text/javascript" async="" src="./Team Maker_files/js"></script><script type="text/javascript" async="" src="./Team Maker_files/in.php"></script><script type="text/javascript" async="" src="./Team Maker_files/in(1).php"></script></head>
+<body><center>
+  <div id="content"><form id="frm" method="POST" action="./Team Maker_files/gen.html" target="fout">
+    <h1>Team Maker</h1>
+    <table id="main"><tbody><tr>
+      <td valign="top">
+        <h2>Copy &amp; paste names below:</h2>
+        <div class="opt">
+          <h4>Format: One Name per Line</h4>
+          <textarea id="names" name="names" autofocus="autofocus" placeholder="Please type in the names of team members below">	
+Devin
+Jennifer
+Elizabeth
+Christian
+Drew
+Gene
+Alex
+Jeffrey
+Dan R
+Brian
+Eric
+Munish
+Marshall
+Darragh
+Dale
+Morgan
+Sharon
+</textarea>
+        </div>
+      </td>
+      <td id="teamsetup" valign="top">
+        <h2>Team Names</h2>
+        <div class="opt">
+          <h4>Team names based on:</h4>
+          <select id="basedon" name="basedon">
+         
+            <option value="Mentors" selected="selected">Mentors</option>
+           
+          </select>
+        </div>
+        <div class="opt">
+          <h4>Edit these as you please:</h4>
+          <textarea id="actualteams" name="teamnames" placeholder="Enter team names here"></textarea>
+        </div>
+      </td>
+      <td id="options" valign="top">
+        <h2>Team Options</h2>
+        <div class="opt">
+          <h4 id="numteams">No. of Teams: 5</h4>
+          <input type="range" min="2" max="25" id="teams" name="teams" value="5">
+        </div>
+        <div class="opt">
+          <h4>Output Format:</h4>
+          <select id="format" name="format">
+            <option value="html">Show Preview (HTML)</option>
+            <option value="new">New Window (HTML)</option>
+            <option value="csv">Save as Excel (CSV)</option>
+          </select>
+        </div>
+        <div class="opt" style="margin-top: 2em;">
+          <h4>Random Teams:</h4>
+          <input type="submit" id="cmdgen" name="cmdgen" value="Generate Teams!">
+        </div>
+      </td>
+    </tr><tr>
+      <td id="output" valign="top" colspan="3">
+        <div id="app">
+          <h4>Thanks to Timothy Harter<br><a href="https://itunes.apple.com/us/app/teamistr/id609410714?mt=8" target="_blank">Teamistr App</a> is now:</h4>
+          <a href="https://itunes.apple.com/us/app/teamistr/id609410714?mt=8" target="_blank">
+            <img src="./Team Maker_files/available-on-app-store.jpg" width="120" height="40" title="Teamistr by Timothy Harter">
+          </a>
+        </div>
+        <h2>Output:</h2>
+        <div class="opt">
+          <h4>Here are your teams:</h4>
+          <iframe id="fout" name="fout" width="97%"></iframe>
+        </div>
+      </td>
+    </tr></tbody></table></form>
+  </div>
+  <div id="footer">
+    Read more about Team-Maker at <a href="http://www.makeuseof.com/dir/team-maker-random-team-generator/">MakeUseOf.com</a><br><br>
+    A project by <a href="http://chir.ag/">Chirag Mehta</a> and <a href="http://art2tech.com/">Tamara Swedberg</a>: Copyright© 2000-2010. All Rights Reserved.
+  </div></center>
+<script type="text/javascript">
+var clicky = { log: function(){ return; }, goal: function(){ return; }};
+var clicky_site_id = 257984;
+(function() {
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = ( document.location.protocol == 'https:' ? 'https://static.getclicky.com/js' : 'http://static.getclicky.com/js' );
+  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+})();
+</script>
+<noscript>&lt;p&gt;&lt;img alt="Clicky" width="1" height="1" src="http://in.getclicky.com/257984ns.gif" /&gt;&lt;/p&gt;</noscript>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./Team Maker_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15629647-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body></html>
